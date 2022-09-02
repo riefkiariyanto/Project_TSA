@@ -17,7 +17,7 @@
 <img src="Prakktikum 3.2.PNG">
 
 ## Praktikum 4: Menerapkan Widget Material Design dan iOS Cupertino
-<img src="Praktikum 4.2.PNG">
+<img src="Prakktikum 4.2.PNG">
 
 ### Langkah 3: Scaffold Widget
 <img src="Prakktikum 4.3.PNG">
