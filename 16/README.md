@@ -2,7 +2,7 @@
 # prakikum
 
 ## Praktikum 1: Membuat Project Flutter Baru
-<img src="praktikum 1.PNG">
+<img src="Prakktikum 1.PNG">
 
 ## Praktikum 2: Membuat Repository GitHub dan Laporan Praktikum
 <img src="praktikum 2.PNG">
