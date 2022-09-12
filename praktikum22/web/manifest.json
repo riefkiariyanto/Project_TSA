@@ -1,6 +1,6 @@
 {
-    "name": "praktikum22",
-    "short_name": "praktikum22",
+    "name": "flutter_plugin_pubdev",
+    "short_name": "flutter_plugin_pubdev",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

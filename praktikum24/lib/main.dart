@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-// import 'package:praktikum24/widgets/trending.dart';
-// import 'package:praktikum24/utils/text.dart';
-import 'package:tmdb_api/tmdb_api.dart';
+import 'package:praktikum24/utils/text.dart';
+import 'package:praktikum24/widgets/trending.dart';
+import 'package:http/http.dart' as http;
 
 void main() => runApp(new MyApp());
 
@@ -23,15 +23,13 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final String apikey = '3c543769cf8707a9eaf029bd65b2dca8';
-  final String readaccesstoken =
-      'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzYzU0Mzc2OWNmODcwN2E5ZWFmMDI5YmQ2NWIyZGNhOCIsInN1YiI6IjYzMTg1MGE4OGRkYzM0MDA3ZmExOWE0ZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.FMzA_Q3EtCuAkc8Ji-dcOofhQdVO6QgBsN2ujsFZhWk  ';
+  final String baseUrl =
+      'https://api.themoviedb.org/3/movie/550?api_key=3c543769cf8707a9eaf029bd65b2dca8';
   List trendingmovies = [];
-  List topratedmovies = [];
-  List tv = [];
 
   loadmovies() async {
     TMDB tmdbWithCustomLogs = TMDB(
-      ApiKeys(apikey, readaccesstoken),
+      ApiKeys(apikey, baseUrl),
       logConfig: ConfigLogger(
         showLogs: true,
         showErrorLogs: true,
@@ -50,18 +48,18 @@ class _HomeState extends State<Home> {
     return Scaffold(
         backgroundColor: Colors.black,
         appBar: AppBar(
-          // title: modified_text(text: 'Flutter Movie App ❤️'),
-          backgroundColor: Colors.transparent,
+          title: modified_text(
+            text: 'Flutter Movie App',
+            color: Colors.white,
+            size: 26,
+          ),
+          backgroundColor: Colors.blueGrey,
         ),
         body: ListView(
           children: [
-            // TV(tv: tv),
-            // TrendingMovies(
-            //   trending: trendingmovies,
-            // ),
-            // TopRatedMovies(
-            // toprated: topratedmovies,
-            // ),
+            TrendingMovies(
+              trending: trendingmovies,
+            ),
           ],
         ));
   }

@@ -5,7 +5,7 @@ import 'package:praktikum24/description.dart';
 class TrendingMovies extends StatelessWidget {
   final List trending;
 
-  const TrendingMovies({super.key, this.trending}) : super(key: key);
+  const TrendingMovies({super.key, required this.trending});
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +17,7 @@ class TrendingMovies extends StatelessWidget {
           modified_text(
             text: 'Trending Movies',
             size: 26,
+            color: Colors.white,
           ),
           SizedBox(height: 10),
           Container(
@@ -62,10 +63,12 @@ class TrendingMovies extends StatelessWidget {
                             SizedBox(height: 5),
                             Container(
                               child: modified_text(
-                                  size: 15,
-                                  text: trending[index]['title'] != null
-                                      ? trending[index]['title']
-                                      : 'Loading'),
+                                size: 15,
+                                text: trending[index]['title'] != null
+                                    ? trending[index]['title']
+                                    : 'Loading',
+                                color: Colors.white,
+                              ),
                             )
                           ],
                         ),

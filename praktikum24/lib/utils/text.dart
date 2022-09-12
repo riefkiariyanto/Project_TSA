@@ -6,11 +6,12 @@ class modified_text extends StatelessWidget {
   final Color color;
   final double size;
 
-  const modified_text({super.key, this.text, this.color, this.size})
-      : super(key: key);
+  const modified_text(
+      {super.key, required this.text, required this.color, required this.size});
 
   @override
   Widget build(BuildContext context) {
-    return Text(text, style: GoogleFonts.roboto(color: color, fontSize: size));
+    return Text(text,
+        style: GoogleFonts.roboto(color: Colors.white, fontSize: 20));
   }
 }

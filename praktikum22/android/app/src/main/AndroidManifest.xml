@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.praktikum22">
+    package="com.example.flutter_plugin_pubdev">
    <application
-        android:label="praktikum22"
+        android:label="flutter_plugin_pubdev"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app_flutter/utils/text.dart';
+import 'package:praktikum24/utils/text.dart';
 
 class Description extends StatelessWidget {
   final String name, description, bannerurl, posterurl, vote, launch_on;
 
   const Description(
-      {Key key,
-      this.name,
-      this.description,
-      this.bannerurl,
-      this.posterurl,
-      this.vote,
-      this.launch_on})
-      : super(key: key);
+      {super.key,
+      required this.name,
+      required this.description,
+      required this.bannerurl,
+      required this.posterurl,
+      required this.vote,
+      required this.launch_on});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,17 +34,25 @@ class Description extends StatelessWidget {
                 ),
                 Positioned(
                     bottom: 10,
-                    child: modified_text(text: '⭐ Average Rating - ' + vote)),
+                    child: modified_text(
+                      text: '⭐ Average Rating - ' + vote,
+                      color: Colors.white,
+                      size: 20,
+                    )),
               ])),
           SizedBox(height: 15),
           Container(
               padding: EdgeInsets.all(10),
               child: modified_text(
-                  text: name != null ? name : 'Not Loaded', size: 24)),
+                  text: name != null ? name : 'Not Loaded',
+                  size: 24,
+                  color: Colors.white)),
           Container(
               padding: EdgeInsets.only(left: 10),
-              child:
-                  modified_text(text: 'Releasing On - ' + launch_on, size: 14)),
+              child: modified_text(
+                  text: 'Releasing On - ' + launch_on,
+                  size: 14,
+                  color: Colors.white)),
           Row(
             children: [
               Container(
@@ -55,7 +63,8 @@ class Description extends StatelessWidget {
               Flexible(
                 child: Container(
                     padding: EdgeInsets.all(10),
-                    child: modified_text(text: description, size: 18)),
+                    child: modified_text(
+                        text: description, size: 18, color: Colors.white)),
               ),
             ],
           )

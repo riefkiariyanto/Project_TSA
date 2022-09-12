@@ -1,4 +1,4 @@
-package com.example.praktikum22
+package com.example.location
 
 import io.flutter.embedding.android.FlutterActivity
 
