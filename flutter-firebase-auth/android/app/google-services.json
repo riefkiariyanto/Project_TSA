@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "408092142415",
+    "project_id": "helloword-ce191",
+    "storage_bucket": "helloword-ce191.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:408092142415:android:d7e8a50023dabf3595b33a",
+        "android_client_info": {
+          "package_name": "com.example.project_d"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "408092142415-55031016q2hpi5j41rn78gsi2dtg6uhd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbnSwdHSHWFm9XrrfrYCAhekXxZgMmtj4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "408092142415-55031016q2hpi5j41rn78gsi2dtg6uhd.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "408092142415-or31cnbf6l806hblsh0dsolfmd9oce3e.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.helloWord"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
