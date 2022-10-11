@@ -1,6 +1,5 @@
 import 'package:adoptme/login_page.dart';
 import 'package:flutter/material.dart';
-import 'package:adoptme/login_page.dart';
 import 'package:adoptme/register_page.dart';
 
 class AuthPage extends StatefulWidget {
@@ -24,7 +23,9 @@ class _AuthPageState extends State<AuthPage> {
     if (showLoginPage) {
       return LoginPage(showRegisterPage: toggleScreens);
     } else {
-      return RegisterPage(showLoginPage: toggleScreens);
+      return RegisterPage(
+        showLoginPage: toggleScreens,
+      );
     }
   }
 }

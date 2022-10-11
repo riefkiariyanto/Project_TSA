@@ -28,12 +28,22 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: pages[_selectedIndex],
+      //App Bar
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.white,
+        title: Text(
+          'AppBar ',
+          style: TextStyle(color: Colors.black, fontFamily: 'RobotoMono'),
+        ),
+      ),
 
       //GNav Bar
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
-          color: Colors.black,
+          color: Color.fromARGB(255, 26, 25, 25),
           boxShadow: [
             BoxShadow(
               blurRadius: 20,
@@ -45,8 +55,8 @@ class HomePageState extends State<HomePage> {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8),
             child: GNav(
-              rippleColor: Colors.white,
-              hoverColor: Colors.white,
+              rippleColor: Colors.grey[300]!,
+              hoverColor: Colors.grey[100]!,
               gap: 8,
               activeColor: Color.fromARGB(255, 255, 255, 255),
               iconSize: 24,
