@@ -30,40 +30,25 @@ class HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: pages[_selectedIndex],
-      //App Bar
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.white,
-        title: Text(
-          'AppBar ',
-          style: TextStyle(color: Colors.black, fontFamily: 'RobotoMono'),
-        ),
-      ),
 
-      //GNav Bar
+      //GNav Bar\\
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
-          color: Color.fromARGB(255, 26, 25, 25),
-          boxShadow: [
-            BoxShadow(
-              blurRadius: 20,
-              color: Colors.black.withOpacity(.1),
-            )
-          ],
+          color: Color.fromARGB(255, 255, 255, 255),
         ),
         child: SafeArea(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8),
             child: GNav(
-              rippleColor: Colors.grey[300]!,
-              hoverColor: Colors.grey[100]!,
+              rippleColor: Color.fromARGB(255, 0, 0, 0)!,
+              hoverColor: Color.fromARGB(255, 0, 0, 0)!,
               gap: 8,
-              activeColor: Color.fromARGB(255, 255, 255, 255),
+              activeColor: Color.fromARGB(255, 0, 0, 0),
               iconSize: 24,
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
               duration: Duration(milliseconds: 400),
-              tabBackgroundColor: Colors.deepOrange[400]!,
-              color: Colors.white,
+              tabBackgroundColor: Colors.grey[100]!,
+              color: Color.fromARGB(255, 0, 0, 0),
               tabs: [
                 GButton(
                   icon: LineIcons.home,

@@ -36,11 +36,11 @@ class _landingPageState extends State<LandingPage> {
                 height: 320.0,
                 fit: BoxFit.cover,
               ),
-
+              
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  // SizedBox(height: 75),
+                  SizedBox(height: 75),
                   Text(
                     'Temukan ',
                     style: TextStyle(fontFamily: 'Gilroy', fontSize: 45),
