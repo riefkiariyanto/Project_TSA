@@ -3,7 +3,7 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:adoptme/firts_page.dart';
 import 'package:adoptme/second_page.dart';
-import 'package:adoptme/thrid_page.dart';
+import 'package:adoptme/Profile_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -17,7 +17,7 @@ class HomePageState extends State<HomePage> {
   List pages = [
     FirtsPage(),
     SecondPage(),
-    ThirdPage(),
+    ProfilePage(),
   ];
   void onTap(int index) {
     setState(() {
@@ -28,22 +28,22 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.white.withOpacity(0),
       body: pages[_selectedIndex],
 
       //GNav Bar\\
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
-          color: Color.fromARGB(255, 255, 255, 255),
+          color: Colors.white,
         ),
         child: SafeArea(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8),
             child: GNav(
-              rippleColor: Color.fromARGB(255, 0, 0, 0)!,
-              hoverColor: Color.fromARGB(255, 0, 0, 0)!,
+              rippleColor: Colors.black,
+              hoverColor: Colors.black,
               gap: 8,
-              activeColor: Color.fromARGB(255, 0, 0, 0),
+              activeColor: Colors.black,
               iconSize: 24,
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
               duration: Duration(milliseconds: 400),

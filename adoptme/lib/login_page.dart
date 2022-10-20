@@ -103,7 +103,7 @@ class loginPageState extends State<LoginPage> {
               ),
               SizedBox(height: 10),
 
-              //SignIn Button
+              //LogIn Button
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: GestureDetector(
@@ -124,7 +124,7 @@ class loginPageState extends State<LoginPage> {
                   ),
                 ),
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 10),
 
               //Register
               Row(
@@ -133,7 +133,9 @@ class loginPageState extends State<LoginPage> {
                   Text(
                     'Not a member ? ',
                     style: TextStyle(
-                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Gilroy',
+                      color: Colors.black,
+                      fontSize: 14,
                     ),
                   ),
                   GestureDetector(
@@ -141,8 +143,9 @@ class loginPageState extends State<LoginPage> {
                     child: Text(
                       'Register Now',
                       style: TextStyle(
+                        fontFamily: 'Gilroy',
                         color: Colors.blueGrey,
-                        fontWeight: FontWeight.bold,
+                        fontSize: 14,
                       ),
                     ),
                   ),

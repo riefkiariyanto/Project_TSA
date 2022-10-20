@@ -1,38 +1,55 @@
 import 'package:flutter/material.dart';
 
 class AnimalCard extends StatelessWidget {
-  const AnimalCard({super.key});
+  // const AnimalCard({super.key});
+  final String animalName;
+  final String animalLocation;
+
+  AnimalCard({
+    required this.animalName,
+    required this.animalLocation,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(left: 25.0),
       child: Container(
-        padding: EdgeInsets.all(20),
+        width: 240,
         decoration: BoxDecoration(
-          color: Colors.deepPurple[200],
-          borderRadius: BorderRadius.circular(12),
+          color: Colors.deepPurple[300],
+          borderRadius: BorderRadius.circular(25),
+          image: new DecorationImage(
+            image: AssetImage(
+              'images/catlist.PNG',
+            ),
+            fit: BoxFit.fill,
+          ),
         ),
-        child: Column(
-          children: [
-            Row(
-              children: [
-                Text(
-                  'Brino',
-                  style: TextStyle(fontFamily: 'Gilroy', fontSize: 18),
-                ),
-                SizedBox(
-                  height: 5,
-                ),
-                Text('Kediri')
-              ],
-            ),
-            //picture Pet
-            Image.asset(
-              'images/dasboard.PNG',
-              height: 100,
-            ),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.only(left: 20.0, top: 7),
+          child: Row(
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    animalName,
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontFamily: 'Gilroy',
+                        fontSize: 26),
+                    textAlign: TextAlign.start,
+                  ),
+                  Text(
+                    animalLocation,
+                    style: TextStyle(color: Colors.white, fontSize: 14),
+                    textAlign: TextAlign.start,
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
