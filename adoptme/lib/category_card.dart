@@ -1,3 +1,5 @@
+import 'dart:js';
+
 import 'package:flutter/material.dart';
 
 class CategoryCard extends StatelessWidget {
@@ -13,19 +15,7 @@ class CategoryCard extends StatelessWidget {
       child: InkWell(
         borderRadius: BorderRadius.circular(20),
         onTap: () {
-          showModalBottomSheet(
-            context: context,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.vertical(
-                top: Radius.circular(50),
-              ),
-            ),
-            builder: (BuildContext context) {
-              return Container(
-                height: 700,
-              );
-            },
-          );
+          _bottomsheet(context);
         },
         child: Container(
           width: 120,
@@ -60,6 +50,38 @@ class CategoryCard extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  _bottomsheet(context) {
+    showModalBottomSheet(
+      context: context,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(40),
+        ),
+      ),
+      builder: (BuildContext context) {
+        return Container(
+          height: 700,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  categoryName,
+                  style: TextStyle(
+                    fontFamily: 'Gilroy',
+                    color: Colors.black,
+                    fontSize: 20,
+                  ),
+                ),
+              )
+            ],
+          ),
+        );
+      },
     );
   }
 }

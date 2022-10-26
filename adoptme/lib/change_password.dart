@@ -48,7 +48,7 @@ class _ChangePasswordState extends State<ChangePassword> {
       body: Column(
         children: [
           SizedBox(
-            height: 70,
+            height: 90,
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30.0),
@@ -121,13 +121,21 @@ class _ChangePasswordState extends State<ChangePassword> {
               ),
             ),
           ),
-          Row(
-            children: [
-              Image.asset(
-                'images/dogb.png',
-              ),
-            ],
-          )
+          SizedBox(
+            height: 240,
+          ),
+          // Container(
+          //   child: Align(
+          //     alignment: Alignment.bottomRight,
+          //     child: Image.asset(
+          //       'images/dogb.png',
+          //       width: 300,
+          //       height: 300,
+          //       color: Colors.white.withOpacity(0.6),
+          //       colorBlendMode: BlendMode.modulate,
+          //     ),
+          //   ),
+          // ),
         ],
       ),
     );

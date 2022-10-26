@@ -12,14 +12,9 @@ class _SecondPageState extends State<SecondPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
-        child: Center(
-          child: Text('Haii !',
-              style: (TextStyle(
-                fontFamily: 'Gilroy',
-                fontSize: 52,
-              ))),
-        ),
+        child: Center(),
       ),
     );
   }

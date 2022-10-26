@@ -23,6 +23,8 @@ class _ProfilePageState extends State<ProfilePage> {
                 SizedBox(
                   height: 75,
                 ),
+
+                //logout Button
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 70.0),
                   child: GestureDetector(
@@ -47,7 +49,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
                 SizedBox(height: 20),
 
-                //change password
+                //change password button
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
