@@ -1,9 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:adoptme/firts_page.dart';
 import 'package:adoptme/second_page.dart';
-import 'package:adoptme/Profile_page.dart';
+import 'package:adoptme/profile_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -55,8 +56,8 @@ class HomePageState extends State<HomePage> {
                   text: 'Home',
                 ),
                 GButton(
-                  icon: LineIcons.search,
-                  text: 'Search',
+                  icon: CupertinoIcons.add_circled,
+                  text: 'Add',
                 ),
                 GButton(
                   icon: LineIcons.user,

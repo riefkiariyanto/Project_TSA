@@ -56,6 +56,7 @@ class CategoryCard extends StatelessWidget {
   _bottomsheet(context) {
     showModalBottomSheet(
       context: context,
+      isScrollControlled: true,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
           top: Radius.circular(40),
@@ -63,7 +64,7 @@ class CategoryCard extends StatelessWidget {
       ),
       builder: (BuildContext context) {
         return Container(
-          height: 700,
+          height: 650,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -74,10 +75,10 @@ class CategoryCard extends StatelessWidget {
                   style: TextStyle(
                     fontFamily: 'Gilroy',
                     color: Colors.black,
-                    fontSize: 20,
+                    fontSize: 22,
                   ),
                 ),
-              )
+              ),
             ],
           ),
         );

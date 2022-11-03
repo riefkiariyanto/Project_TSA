@@ -72,11 +72,14 @@ flutter:
       - images/Login.PNG
       - images/register.PNG
       - images/catlist.PNG
+      - images/catAset.jpg
       - images/icon/bird.png
       - images/icon/cat.png
       - images/icon/dog.png
       - images/dogb.png
+      - images/jokowi.jpg
       - images/icon/fish.png
+      - images/bgprofile.jpg
       
 
   # An image asset can refer to one or more resolution-specific "variants", see

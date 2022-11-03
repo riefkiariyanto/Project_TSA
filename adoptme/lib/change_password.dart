@@ -1,4 +1,9 @@
+import 'dart:ui';
+
+import 'package:adoptme/home_page.dart';
+import 'package:adoptme/profile_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ChangePassword extends StatefulWidget {
@@ -47,8 +52,11 @@ class _ChangePasswordState extends State<ChangePassword> {
       backgroundColor: Colors.white,
       body: Column(
         children: [
-          SizedBox(
-            height: 90,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              butonArrow(context),
+            ],
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30.0),
@@ -122,22 +130,45 @@ class _ChangePasswordState extends State<ChangePassword> {
             ),
           ),
           SizedBox(
-            height: 240,
+            height: 40,
           ),
-          // Container(
-          //   child: Align(
-          //     alignment: Alignment.bottomRight,
-          //     child: Image.asset(
-          //       'images/dogb.png',
-          //       width: 300,
-          //       height: 300,
-          //       color: Colors.white.withOpacity(0.6),
-          //       colorBlendMode: BlendMode.modulate,
-          //     ),
-          //   ),
-          // ),
         ],
       ),
     );
   }
+}
+
+butonArrow(BuildContext context) {
+  return Padding(
+    padding: const EdgeInsets.all(20.0),
+    child: InkWell(
+      onTap: () {
+        Navigator.pushReplacement(
+            context, new MaterialPageRoute(builder: (context) => HomePage()));
+      },
+      child: Container(
+        clipBehavior: Clip.hardEdge,
+        height: 55,
+        width: 55,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(25),
+        ),
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+          child: Container(
+            height: 55,
+            width: 55,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
+            ),
+            child: Icon(
+              CupertinoIcons.arrow_left,
+              size: 20,
+              color: Colors.black,
+            ),
+          ),
+        ),
+      ),
+    ),
+  );
 }
