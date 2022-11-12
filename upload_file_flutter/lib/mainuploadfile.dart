@@ -13,7 +13,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
   XFile? image;
 
   final ImagePicker picker = ImagePicker();
@@ -35,7 +34,7 @@ class _HomeState extends State<Home> {
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
             title: Text('Please choose media to select'),
             content: Container(
-              height: MediaQuery.of(context).size.height / 6,
+              height: MediaQuery.of(context).size.height / 9,
               child: Column(
                 children: [
                   ElevatedButton(

@@ -2,8 +2,8 @@ import 'package:adoptme/login_page.dart';
 import 'package:flutter/material.dart';
 
 class LandingPage extends StatefulWidget {
-  final VoidCallback showloginPage;
-  const LandingPage({super.key, required this.showloginPage});
+  // final VoidCallback showloginPage;
+  // const LandingPage({super.key, required this.showloginPage});
 
   @override
   State<LandingPage> createState() => _landingPageState();
@@ -36,7 +36,7 @@ class _landingPageState extends State<LandingPage> {
                 height: 320.0,
                 fit: BoxFit.cover,
               ),
-              
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

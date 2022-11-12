@@ -2,7 +2,6 @@ import 'dart:ui';
 
 import 'package:adoptme/change_password.dart';
 import 'package:adoptme/home_page.dart';
-import 'package:adoptme/main.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -17,8 +16,7 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   final double coverHeight = 250;
   final double profileHeight = 100;
-  final double biodata = 295;
-
+  final double biodata = 555;
   @override
   Widget build(BuildContext context) {
     final bottom = profileHeight - biodata;
@@ -34,7 +32,6 @@ class _ProfilePageState extends State<ProfilePage> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               butonArrow(context),
-              // logoutbtn(context),
             ],
           ),
           Positioned(
@@ -197,42 +194,36 @@ class _ProfilePageState extends State<ProfilePage> {
   detailBio() {
     return Container(
       width: 400,
-      height: 40,
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Card(
-          child: Column(
-            children: [
-              ListTile(
-                leading: Icon(Icons.email),
-                title: Text('vi@gmail.com'),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              ListTile(
-                leading: Icon(Icons.phone_iphone),
-                title: Text('vi@gmail.com'),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              ListTile(
-                leading: Icon(Icons.location_on),
-                title: Text('vi@gmail.com'),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              ListTile(
-                leading: Icon(Icons.person),
-                title: Text('vi@gmail.com'),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-            ],
-          ),
+      height: 262,
+      child: Card(
+        child: Column(
+          children: [
+            ListTile(
+              leading: Icon(Icons.email),
+              title: Text('vi@gmail.com'),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            ListTile(
+              leading: Icon(Icons.phone_iphone),
+              title: Text('089666109666'),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            ListTile(
+              leading: Icon(Icons.location_on),
+              title: Text('Malang'),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            ListTile(
+              leading: Icon(Icons.person),
+              title: Text('21'),
+            ),
+          ],
         ),
       ),
     );
