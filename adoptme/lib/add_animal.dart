@@ -1,52 +1,22 @@
 import 'dart:io';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get/get.dart';
+import 'package:adoptme/add_animal_controller.dart';
 
-class SecondPage extends StatefulWidget {
-  const SecondPage({Key? key}) : super(key: key);
-
-  @override
-  State<SecondPage> createState() => _SecondPageState();
+class AddAnimal extends StatefulWidget {
+  State<AddAnimal> createState() => _AddAnimal();
 }
 
-class _SecondPageState extends State<SecondPage> {
+class _AddAnimal extends State<AddAnimal> {
+  final controller = Get.put(AddAnimalController());
   File? myImage;
   UploadTask? uploadTask;
   PickedFile? pickedFile;
 
-  TextEditingController animalNameController = TextEditingController();
-  TextEditingController sexController = TextEditingController();
-  TextEditingController ageController = TextEditingController();
-  TextEditingController weightController = TextEditingController();
-  TextEditingController desController = TextEditingController();
-  @override
-  void dispose() {
-    animalNameController.dispose();
-    sexController.dispose();
-    ageController.dispose();
-    weightController.dispose();
-    desController.dispose();
-    super.dispose();
-  }
-
-  storeEntry(String imageUrl, String animalName, String sex, int age,
-      int weight, String description) async {
-    await FirebaseFirestore.instance.collection('animals').add({
-      'image': imageUrl,
-      'name': animalName,
-      'sex': sex,
-      'age': age,
-      'weight': weight,
-      'description': description
-    }).then((value) {
-      Get.snackbar('Succsess', 'Data is Stored succesfully');
-    });
-  }
-
   final ImagePicker _picker = ImagePicker();
+
   getImage(ImageSource source) async {
     final XFile? image = await _picker.pickImage(source: source);
 
@@ -71,15 +41,7 @@ class _SecondPageState extends State<SecondPage> {
           print("file is upload");
           break;
         case TaskState.success:
-          ref.getDownloadURL().then((value) {
-            storeEntry(
-                value,
-                animalNameController.text.trim(),
-                sexController.text.trim(),
-                int.parse(ageController.text.trim()),
-                int.parse(weightController.text.trim()),
-                desController.text.trim());
-          });
+          ref.getDownloadURL().then((value) {});
           break;
       }
     });
@@ -129,19 +91,22 @@ class _SecondPageState extends State<SecondPage> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 40.0),
                 child: TextField(
-                    controller: animalNameController,
-                    decoration: InputDecoration(
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white),
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.deepOrange),
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        hintText: 'animal name',
-                        fillColor: Colors.grey[100],
-                        filled: true)),
+                  controller: controller.animalNameController,
+                  autocorrect: false,
+                  textInputAction: TextInputAction.next,
+                  decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.deepOrange),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      hintText: 'animal name',
+                      fillColor: Colors.grey[100],
+                      filled: true),
+                ),
               ),
               SizedBox(
                 height: 10,
@@ -149,7 +114,9 @@ class _SecondPageState extends State<SecondPage> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 40.0),
                 child: TextField(
-                    controller: sexController,
+                    controller: controller.sexController,
+                    autocorrect: false,
+                    textInputAction: TextInputAction.next,
                     decoration: InputDecoration(
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),
@@ -169,7 +136,9 @@ class _SecondPageState extends State<SecondPage> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 40.0),
                 child: TextField(
-                    controller: ageController,
+                    controller: controller.ageController,
+                    autocorrect: false,
+                    textInputAction: TextInputAction.next,
                     decoration: InputDecoration(
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),
@@ -189,7 +158,9 @@ class _SecondPageState extends State<SecondPage> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 40.0),
                 child: TextField(
-                    controller: weightController,
+                    controller: controller.weightController,
+                    autocorrect: false,
+                    textInputAction: TextInputAction.next,
                     decoration: InputDecoration(
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),
@@ -209,7 +180,9 @@ class _SecondPageState extends State<SecondPage> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 40.0),
                 child: TextField(
-                    controller: desController,
+                    controller: controller.descriptionController,
+                    autocorrect: false,
+                    textInputAction: TextInputAction.next,
                     decoration: InputDecoration(
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),
@@ -254,7 +227,13 @@ class _SecondPageState extends State<SecondPage> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 40.0),
                     child: GestureDetector(
-                      onTap: uploadFiles,
+                      // onTap: uploadFiles,
+                      onTap: () => controller.AddAnimal(
+                          controller.animalNameController.text,
+                          controller.sexController.text,
+                          controller.descriptionController.text,
+                          controller.weightController.text,
+                          controller.ageController.text),
                       child: Container(
                         padding: EdgeInsets.all(20),
                         decoration: BoxDecoration(
@@ -290,7 +269,7 @@ class _SecondPageState extends State<SecondPage> {
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
             title: Text('Please choose media to select'),
             content: Container(
-              height: MediaQuery.of(context).size.height / 9,
+              height: MediaQuery.of(context).size.height / 7,
               child: Column(
                 children: [
                   ElevatedButton(
@@ -304,6 +283,9 @@ class _SecondPageState extends State<SecondPage> {
                         Text('From Gallery'),
                       ],
                     ),
+                  ),
+                  SizedBox(
+                    height: 10,
                   ),
                   ElevatedButton(
                     onPressed: () {

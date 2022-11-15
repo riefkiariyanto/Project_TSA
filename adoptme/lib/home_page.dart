@@ -1,9 +1,10 @@
+import 'package:adoptme/add_animal.dart';
+import 'package:adoptme/animal_list.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:adoptme/firts_page.dart';
-import 'package:adoptme/second_page.dart';
 import 'package:adoptme/profile_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -17,7 +18,7 @@ class HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
   List pages = [
     FirtsPage(),
-    SecondPage(),
+    AddAnimal(),
     ProfilePage(),
   ];
   void onTap(int index) {

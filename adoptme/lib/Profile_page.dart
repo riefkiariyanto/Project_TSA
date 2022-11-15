@@ -1,7 +1,7 @@
 import 'dart:ui';
-
 import 'package:adoptme/change_password.dart';
 import 'package:adoptme/home_page.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -14,19 +14,53 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  final double coverHeight = 250;
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
+  final user = FirebaseAuth.instance.currentUser!;
+
+  Stream<QuerySnapshot<Object?>> streamData() {
+    CollectionReference animals = firestore.collection("animals");
+    return animals.snapshots();
+  }
+
+// dicument id
+  List<String> docIDs = [];
+//  get doc
+  Future getDocId() async {
+    await FirebaseFirestore.instance.collection('user').get().then(
+          (snapshot) => snapshot.docs.forEach(
+            (document) {
+              print(document.reference);
+              docIDs.add(document.reference.id);
+            },
+          ),
+        );
+  }
+
+  @override
+  void initState() {
+    getDocId();
+    super.initState();
+  }
+
+  final double coverHeight = 215;
   final double profileHeight = 100;
-  final double biodata = 555;
+  final double biodata = 245;
   @override
   Widget build(BuildContext context) {
     final bottom = profileHeight - biodata;
     final top = coverHeight - profileHeight / 2;
+    final up = coverHeight - profileHeight;
 
     return Scaffold(
       body: Stack(
         clipBehavior: Clip.none,
         alignment: Alignment.topCenter,
         children: [
+          // StreamBuilder<QuerySnapshot<Object?>>(stream: streamData(),builder:(context, snapshot) {
+          //   print(snapshot.data!.docs);
+          //     if (snapshot.connectionState == ConnectionState.active){
+          //        var listAllDocs = snapshot.data!.docs;
+          //     }},),
           buildCoverImgae(),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -39,30 +73,36 @@ class _ProfilePageState extends State<ProfilePage> {
             child: profileImage(),
           ),
           Positioned(
-              bottom: bottom,
-              child: Column(
-                children: [
-                  Text(
-                    'Viola',
-                    style: TextStyle(
-                      fontFamily: 'Gilroy',
-                      fontSize: 25,
-                    ),
+            bottom: up,
+            child: Column(
+              children: [
+                Text(
+                  'Viola',
+                  style: TextStyle(
+                    fontFamily: 'Gilroy',
+                    fontSize: 25,
                   ),
-                  detailBio(),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  logoutbtn(context),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  changebtn(context),
-                ],
-              )
-
-              // changebtn(context),
+                ),
+                detailBio(),
+                SizedBox(
+                  height: 10,
+                ),
+              ],
+            ),
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              logoutbtn(context),
+              SizedBox(
+                height: 10,
               ),
+              changebtn(context),
+              SizedBox(
+                height: 40,
+              ),
+            ],
+          ),
         ],
       ),
     );
@@ -79,7 +119,9 @@ class _ProfilePageState extends State<ProfilePage> {
           FirebaseAuth.instance.signOut();
         },
         child: Container(
-          padding: EdgeInsets.symmetric(vertical: 15, horizontal: 160),
+          padding: EdgeInsets.symmetric(
+            vertical: 15,
+          ),
           decoration: BoxDecoration(
             color: Colors.red[400],
             borderRadius: BorderRadius.circular(16),
@@ -193,15 +235,19 @@ class _ProfilePageState extends State<ProfilePage> {
 
   detailBio() {
     return Container(
-      width: 400,
-      height: 262,
+      width: 350,
+      height: 270,
       child: Card(
         child: Column(
           children: [
-            ListTile(
-              leading: Icon(Icons.email),
-              title: Text('vi@gmail.com'),
-            ),
+            FutureBuilder(
+                future: getDocId(),
+                builder: (context, snapshot) {
+                  return ListTile(
+                    leading: Icon(Icons.email),
+                    title: Text(user.email!),
+                  );
+                }),
             SizedBox(
               height: 10,
             ),

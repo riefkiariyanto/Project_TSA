@@ -1,3 +1,4 @@
+import 'package:adoptme/animal_list.dart';
 import 'package:flutter/material.dart';
 
 class CategoryCard extends StatelessWidget {

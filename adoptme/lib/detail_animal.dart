@@ -1,11 +1,21 @@
 import 'dart:ui';
 import 'package:adoptme/home_page.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class DetailAnimal extends StatelessWidget {
-  // const DetailAnimal({super.key});
+  DetailAnimal(this.itemId, {Key? key}) : super(key: key) {
+    _reference = FirebaseFirestore.instance.collection('animals').doc(itemId);
+    _futureData = _reference.get();
+  }
+  String itemId;
+  late DocumentReference _reference;
 
+  //_reference.get()  --> returns Future<DocumentSnapshot>
+  //_reference.snapshots() --> Stream<DocumentSnapshot>
+  late Future<DocumentSnapshot> _futureData;
+  late Map data;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
