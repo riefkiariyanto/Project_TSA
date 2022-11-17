@@ -1,8 +1,7 @@
 import 'package:adoptme/List_Controller.dart';
+import 'package:adoptme/detail_animal.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_login/flutter_login.dart';
 import 'package:get/get.dart';
 
 class AnimalListView extends GetView<ListController> {
@@ -21,11 +20,22 @@ class AnimalListView extends GetView<ListController> {
               if (snapshot.connectionState == ConnectionState.active) {
                 var listAllDocs = snapshot.data!.docs;
                 return ListView.builder(
-                  itemCount: 1,
+                  itemCount: snapshot.data!.docs.length,
                   itemBuilder: (context, index) => ListTile(
+                    leading: Image.asset(
+                      'images/listPic.jpeg',
+                      width: 70,
+                      height: 130,
+                    ),
                     title: Text(
                         "${(listAllDocs[index].data() as Map<String, dynamic>)["animalName"]}"),
-                    subtitle: Text("description"),
+                    subtitle: Text(
+                        "${(listAllDocs[index].data() as Map<String, dynamic>)["description"]}"),
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => DetailAnimal(),
+                      ));
+                    },
                   ),
                 );
               }

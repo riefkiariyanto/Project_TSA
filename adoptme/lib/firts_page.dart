@@ -2,6 +2,7 @@ import 'package:adoptme/animal_card.dart';
 import 'package:adoptme/category_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class FirtsPage extends StatefulWidget {
   const FirtsPage({Key? key}) : super(key: key);
@@ -11,6 +12,15 @@ class FirtsPage extends StatefulWidget {
 }
 
 class _FirtsPageState extends State<FirtsPage> {
+  whatsaapGrub() async {
+    const url = "https://chat.whatsapp.com/HaX7w5A1SvjBcwZk9cL8fE";
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -128,7 +138,10 @@ class _FirtsPageState extends State<FirtsPage> {
                             decoration: BoxDecoration(
                                 color: Colors.orange[300],
                                 borderRadius: BorderRadius.circular(12)),
-                            child: Center(
+                            child: GestureDetector(
+                              onTap: () {
+                                whatsaapGrub();
+                              },
                               child: Text(
                                 'Join Now',
                                 style: TextStyle(
